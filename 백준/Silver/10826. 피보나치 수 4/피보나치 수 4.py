@@ -1,7 +1,12 @@
 import sys
 n=int(input())
-fibo=[0,1]
-
-for i in range(2,n+1):
-    fibo.append(fibo[i-1]+fibo[i-2])
-print(fibo[n])
+a=0
+b=1
+c=0
+for i in range(1,n):
+    c=a+b
+    a=b
+    b=c
+if(n==0):print(a)
+elif(n==1):print(b)
+else:print(c)
