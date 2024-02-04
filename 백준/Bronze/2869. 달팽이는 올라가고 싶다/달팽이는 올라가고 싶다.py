@@ -1,0 +1,11 @@
+a,b,v=map(int,input().split())
+ct=0
+d=(v-a)//(a-b)
+result=d*(a-b)
+while(v>result):
+  result+=a
+  d+=1
+  if(v<=result):
+    break
+  result-=b
+print(d)
