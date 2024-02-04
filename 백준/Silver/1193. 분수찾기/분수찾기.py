@@ -1,0 +1,12 @@
+n=int(input())
+d=0
+m=1
+x=2
+while(m<n):
+  m+=x
+  x+=1
+  d+=1
+if(d%2==0):
+  print(m-n+1,'/',x-m+n-1,sep='')
+else:
+  print(x-m+n-1,'/',m-n+1,sep='')
