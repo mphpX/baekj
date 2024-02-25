@@ -1,6 +1,6 @@
 #a 98
 import sys
-l=input()
+l=sys.stdin.readline().rstrip()
 x=[[0 for j in range(26)]for i in range(len(l))]
 x[0][ord(l[0])-97]=1
 n=int(input())
