@@ -1,11 +1,9 @@
-import sys
-from sys import stdin
-while True:
-    arr=list(map(int,sys.stdin.readline().split()))
-    if(arr[0]==0 and arr[1]==0 and arr[2]==0):
-        break
-    arr.sort()
-    if(arr[0]**2+arr[1]**2==arr[2]**2):
+l=list(map(int,input().split()))
+l.sort()
+while(l[0]!=0 or l[2]!=0):
+    if(l[0]**2+l[1]**2==l[2]**2):
         print("right")
     else:
         print("wrong")
+    l=list(map(int,input().split()))
+    l.sort()
