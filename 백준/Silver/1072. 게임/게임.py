@@ -1,0 +1,22 @@
+import sys
+x,y=map(int,sys.stdin.readline().split())
+z=(y*100)//x
+s=1
+e=x
+mid=0
+if(z>=99):
+    print(-1)
+else:
+    while(s<=e):
+        mid=(s+e)//2
+        result=(y+mid)*100//(x+mid)
+        if(result==z):
+            s=mid+1
+        else:
+            e=mid-1
+    while(True):
+        if(z==(y+mid)*100//(x+mid)):
+            mid+=1
+        else:
+            break
+    print(mid)
