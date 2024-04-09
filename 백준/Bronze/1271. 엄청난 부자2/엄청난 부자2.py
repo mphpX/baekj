@@ -1,5 +1,3 @@
 import sys
-from sys import stdin
-n,m=map(int,stdin.readline().split())
-print(n//m)
-print(n%m)
+n,m=map(int,sys.stdin.readline().split())
+print(n//m,n%m,sep='\n')
