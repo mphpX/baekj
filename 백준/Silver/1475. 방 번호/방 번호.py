@@ -1,0 +1,11 @@
+n=int(input())
+l=[0]*10
+x=n
+while(x>0):
+    y=x%10
+    l[x%10]+=1
+    x//=10
+ct=(l[6]+l[9]+1)//2
+l[6]=ct
+l[9]=ct
+print(max(l))
