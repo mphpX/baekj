@@ -1,4 +1,4 @@
-a,b=map(str,input().split())
+a,b=list(input().split())
 def acc(a,b):
     ct=0
     for i in range(len(a)):
