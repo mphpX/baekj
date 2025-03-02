@@ -1,0 +1,9 @@
+n,a,b=map(int,input().split())
+x=a-1
+y=b-1
+ct=0
+while(x!=y):
+    x//=2
+    y//=2
+    ct+=1
+print(ct)
