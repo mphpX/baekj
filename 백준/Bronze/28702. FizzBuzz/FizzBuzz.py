@@ -1,0 +1,19 @@
+inp=[]
+inp.append(input())
+inp.append(input())
+inp.append(input())
+cur=0
+for i in range(3):
+    if(inp[i].isdigit()==True):
+        cur=int(inp[i])+(3-i)
+        break
+if(cur%3==0):
+    if(cur%5==0):
+        print("FizzBuzz")
+    else:
+        print("Fizz")
+else:
+    if(cur%5==0):
+        print("Buzz")
+    else:
+        print(cur)
