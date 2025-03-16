@@ -1,0 +1,5 @@
+a=int(input())
+b=input()
+c=int(input())
+print(a+int(b)-c)
+print(a*10**len(b)+int(b)-c)
