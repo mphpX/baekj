@@ -1,16 +1,15 @@
-import sys
 n=int(input())
-arr=[]
+wine=[]
 for i in range(n):
-    arr.append(int(input()))
-dp=[]
-for i in range(n):
-    if(i==0):dp.append(arr[0])
-    elif(i==1):dp.append(arr[0]+arr[1])
-    elif(i==2):dp.append(max(arr[0]+arr[2],arr[1]+arr[2]))
-    else:
-        m=0
-        for j in range(i-2):
-            if(m<dp[j]):m=dp[j]
-        dp.append(max(dp[i-2],m+arr[i-1])+arr[i])
+    a=int(input())
+    wine.append(a)
+dp=[0 for i in range(n)]
+dp[0]=wine[0]
+if(n>1):
+    dp[1]=wine[0]+wine[1]
+    if(n>2):
+        dp[2]=max(dp[1],wine[1]+wine[2])
+
+for i in range(3,n):
+    dp[i]=max(dp[i-2]+wine[i],dp[i-2]-wine[i-2]+wine[i-1]+wine[i],dp[i-3]+wine[i-1]+wine[i])
 print(max(dp))
