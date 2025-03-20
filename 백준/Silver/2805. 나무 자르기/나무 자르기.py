@@ -1,17 +1,18 @@
 import sys
-n,m=map(int,sys.stdin.readline().split())
-l=list(map(int,sys.stdin.readline().split()))
-s=1
-e=max(l)
-mid=0
-while(s<=e):
-    mid=(s+e)//2
-    ct=0
-    for i in range(n):
-        if(l[i]>mid):
-            ct+=l[i]-mid
-    if(ct>=m):
-        s=mid+1
+input = sys.stdin.readline
+n,m=map(int,input().split())
+l=list(map(int,input().split()))
+left=0
+right=max(l)
+tr=0
+while(left<=right):
+    mid=(left+right)//2
+    tr=0
+    for i in l:
+        if(i-mid>0):
+            tr+=i-mid
+    if(tr<m):
+        right=mid-1
     else:
-        e=mid-1
-print(e)
+        left=mid+1
+print(right)    
