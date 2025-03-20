@@ -11,6 +11,8 @@ while(left<=right):
     for i in l:
         if(i-mid>0):
             tr+=i-mid
+            if tr >= m:
+                break
     if(tr<m):
         right=mid-1
     else:
