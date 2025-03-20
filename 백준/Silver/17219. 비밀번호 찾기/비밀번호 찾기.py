@@ -1,9 +1,10 @@
 import sys
-n,m=map(int,sys.stdin.readline().split())
-a=dict()
+input = sys.stdin.readline
+n,m=map(int,input().split())
+d=dict()
 for i in range(n):
-    x,y=sys.stdin.readline().split()
-    a[x]=y
+    a,b=map(str,input().split())
+    d[a]=b
 for i in range(m):
-    o=sys.stdin.readline().strip()
-    print(a[o])
+    a=input().strip()
+    print(d[a])
