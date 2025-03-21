@@ -1,11 +1,16 @@
 import sys
-arr=[0]
-n=int(input())
+input = sys.stdin.readline
+n = int(input())
+st = [0 for _ in range(n)]
 for i in range(n):
-    arr.append(int(input()))
-dp=[0,arr[1]]
-for i in range(2,n+1):
-    if(i==2):dp.append(arr[1]+arr[2])
-    elif(i==3):dp.append(max(arr[1]+arr[3],arr[2]+arr[3]))
-    else:dp.append(max(dp[i-2]+arr[i],dp[i-3]+arr[i-1]+arr[i]))
-print(dp[n])
+    x = int(input())
+    st[i] = x
+dp= [0 for _ in range(n)]
+dp[0]=st[0]
+if(n>1):
+    dp[1]=st[0]+st[1]
+    if(n>2):
+        dp[2]=max(st[0],st[1])+st[2]
+for i in range(3,n):
+    dp[i]=max(dp[i-2],dp[i-3]+st[i-1],dp[i-1]-st[i-1])+st[i]
+print(dp[n-1])
