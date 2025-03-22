@@ -1,43 +1,53 @@
 import sys
-sys.setrecursionlimit(10 ** 6)
-n=int(sys.stdin.readline())
-visited=[[0 for _ in range(n) ]for _ in range(n)]
-l=[]
-dx=[1,-1,0,0]
-dy=[0,0,1,-1]
-d=0
-rd=0
-for i in range(n):
-    a=sys.stdin.readline().strip()
-    l.append(a)
-def rdfs(x,y,ch):
-    visited[x][y]=1
-    for i in range(4):
-        nx=x+dx[i]
-        ny=y+dy[i]
-        if(0<=nx<n and 0<=ny<n and visited[nx][ny]==0):
-            if(l[nx][ny]==ch):
-                rdfs(nx,ny,ch)
-            else:
-                if(ch!='B' and l[nx][ny]!='B'):
-                    rdfs(nx,ny,ch)
-def dfs(x,y,ch):
-    visited[x][y]=1
-    for i in range(4):
-        nx=x+dx[i]
-        ny=y+dy[i]
-        if(0<=nx<n and 0<=ny<n and visited[nx][ny]==0):
-            if(l[nx][ny]==ch):
-                dfs(nx,ny,ch)
+from collections import deque
+input = sys.stdin.readline
+
+n = int(input())
+gh = [list(input().strip()) for _ in range(n)]
+
+def jbfs(start_x, start_y, graph, is_jr, visited):
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    queue = deque()
+    queue.append((start_x, start_y))
+    visited[start_x][start_y] = True
+
+    start_color = graph[start_x][start_y]
+
+    while queue:
+        x, y = queue.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny]:
+                neighbor_color = graph[nx][ny]
+                if is_jr:
+                    # 적록색약 모드
+                    if (start_color in 'RG' and neighbor_color in 'RG') or start_color == neighbor_color:
+                        visited[nx][ny] = True
+                        queue.append((nx, ny))
+                else:
+                    # 일반 모드
+                    if start_color == neighbor_color:
+                        visited[nx][ny] = True
+                        queue.append((nx, ny))
+
+# 일반 시야
+visited = [[False] * n for _ in range(n)]
+fct = 0
 for i in range(n):
     for j in range(n):
-        if(visited[i][j]==0):
-            dfs(i,j,l[i][j])
-            d+=1
-visited=[[0 for _ in range(n) ]for _ in range(n)]
+        if not visited[i][j]:
+            jbfs(i, j, gh, False, visited)
+            fct += 1
+
+# 적록색약 시야
+visited = [[False] * n for _ in range(n)]
+sct = 0
 for i in range(n):
     for j in range(n):
-        if(visited[i][j]==0):
-            rdfs(i,j,l[i][j])
-            rd+=1
-print(d,rd)
+        if not visited[i][j]:
+            jbfs(i, j, gh, True, visited)
+            sct += 1
+
+print(fct, sct)
