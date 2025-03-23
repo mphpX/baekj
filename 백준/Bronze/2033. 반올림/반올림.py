@@ -1,0 +1,12 @@
+n=int(input())
+ct=0
+while(n>10):
+    if(n%10>4):
+        n=n//10+1
+    else:
+        n=n//10
+    ct+=1
+while(ct):
+    n*=10
+    ct-=1
+print(n)
