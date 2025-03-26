@@ -1,23 +1,22 @@
+import sys
 from collections import deque
-Dict=dict()
-def bfs(start, graph):
-    visited=set([start])
-    queue=deque([start])
-    result={}
-    while queue:
-        cur_node= queue.popleft()
-        for next in graph[cur_node]:
-            if next not in visited:
-                visited.add(next)
-                result[next]=cur_node
-                queue.append(next)
-    return result
+input=sys.stdin.readline
 n=int(input())
-graph={i:[] for i in range(1,n+1)}
+graph=[[] for _ in range(n+1)]
 for i in range(n-1):
     a,b=map(int,input().split())
     graph[a].append(b)
     graph[b].append(a)
-ans=bfs(1,graph)
+q=deque([1])
+visit=[False for _ in range(n+1)]
+ans=[0 for _ in range(n+1)]
+visit[1]=True
+while(q):
+    cur=q.popleft()
+    for i in graph[cur]:
+        if(visit[i]==False):
+            q.append(i)
+            visit[i]=True
+            ans[i]=cur
 for i in range(2,n+1):
     print(ans[i])
