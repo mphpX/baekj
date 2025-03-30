@@ -9,7 +9,6 @@ for i in range(m):
     graph[start].append((end,cost))
 origin,destination=map(int,input().split())
 ans=[100000*m for _ in range(n+1)]
-visited=[False for _ in range(n+1)]
 ans[0]=0
 ans[origin]=0
 cur=origin
