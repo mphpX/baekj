@@ -1,0 +1,16 @@
+l,r=input().split()
+lpos=len(l)-1
+rpos=len(r)-1
+ans=0
+if(lpos<rpos):
+    print(ans)
+else:
+    cur=0
+    while(cur<=lpos):
+        if(l[cur]==r[cur]):
+            if(l[cur]=='8'):
+                ans+=1
+        else:
+            break
+        cur+=1
+    print(ans)
