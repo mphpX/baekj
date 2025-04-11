@@ -1,29 +1,38 @@
-from collections import deque
 import sys
-def bfs(v):
-    q=deque()
-    q.append(v)
-    visit_list[v]=1
-    while q:
-        v=q.popleft()
-        print(v,end=" ")
-        for i in range(n+1):
-            if(visit_list[i]==0 and graph[v][i]==1):
-                q.append(i)
-                visit_list[i]=1
-def dfs(v):
-    visit_list2[v]=1
-    print(v,end=" ")
-    for i in range(1,n+1):
-        if(graph[v][i]==1 and visit_list2[i]==0):
-            dfs(i)
+from collections import deque
+input=sys.stdin.readline
 n,m,v=map(int,input().split())
-graph=[[0]*(n+1)for _ in range(n+1)]
-visit_list=[0]*(n+1)
-visit_list2=[0]*(n+1)
-for _ in range(m):
-    a,b=map(int,sys.stdin.readline().split())
-    graph[a][b]=graph[b][a]=1
+graph=[[] for _ in range(n+1)]
+for i in range(m):
+    x,y=map(int,input().split())
+    graph[x].append(y)
+    graph[y].append(x)
+for i in range(1,n+1):
+    graph[i].sort()
+def bfs(n,start):
+    bfs_visit=[False for _ in range(n+1)]
+    q=deque([start])
+    bfs_visit[start]=True
+    ans=[]
+    while(q):
+        cur=q.popleft()
+        ans.append(cur)
+        for i in graph[cur]:
+            if(bfs_visit[i]==False):
+                q.append(i)
+                bfs_visit[i]=True
+    return ans
+dfs_visit=[False for _ in range(n+1)]
+def dfs(start):
+    if(dfs_visit[start]==1):
+        return
+    print(start,end=' ')
+    dfs_visit[start]=True
+    for i in graph[start]:
+        if(dfs_visit[i]==False):
+            dfs(i)
 dfs(v)
 print()
-bfs(v)
+bfs_ans=bfs(n,v)
+for i in bfs_ans:
+    print(i,end=' ')
