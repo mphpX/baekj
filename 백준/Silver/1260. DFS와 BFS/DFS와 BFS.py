@@ -24,8 +24,6 @@ def bfs(n,start):
     return ans
 dfs_visit=[False for _ in range(n+1)]
 def dfs(start):
-    if(dfs_visit[start]==1):
-        return
     print(start,end=' ')
     dfs_visit[start]=True
     for i in graph[start]:
