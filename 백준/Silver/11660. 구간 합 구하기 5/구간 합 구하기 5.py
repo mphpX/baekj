@@ -1,25 +1,21 @@
 import sys
-input=sys.stdin.readline
-n,t=map(int,input().split())
-graph=[list(map(int,input().split())) for _ in range(n)]
-dp=graph
-for i in range(n):
-    for j in range(n):
-        if(j==0):
-            continue   
-        dp[i][j]+=dp[i][j-1]
-for i in range(1,n):
-    for j in range(n):
-        dp[i][j]+=dp[i-1][j]        
-for _ in range(t):
-    fx,fy, sx,sy=map(int,input().split())
-    fx,fy, sx,sy = fx-1,fy-1, sx-1,sy-1
-    l,ll,lll=0,0,0
-    if(fy!=0):
-        l=dp[sx][fy-1]
-    if(fx!=0):
-        ll=dp[fx-1][sy]
-    if(fy!=0 and fx!=0):
-        lll=dp[fx-1][fy-1]
-    ans=dp[sx][sy]-l-ll+lll
-    print(ans)
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+
+# 입력 받기
+graph = [list(map(int, input().split())) for _ in range(n)]
+
+# 2차원 누적합 배열 초기화
+dp = [[0]*(n+1) for _ in range(n+1)]
+
+# 누적합 계산
+for i in range(1, n+1):
+    for j in range(1, n+1):
+        dp[i][j] = graph[i-1][j-1] + dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1]
+
+# 쿼리 처리
+for _ in range(m):
+    x1, y1, x2, y2 = map(int, input().split())
+    total = dp[x2][y2] - dp[x1-1][y2] - dp[x2][y1-1] + dp[x1-1][y1-1]
+    print(total)
