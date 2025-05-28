@@ -1,8 +1,5 @@
-import sys
 from collections import deque
-sys.setrecursionlimit(10**6)
 n,k=map(int,input().split())
-
 ans=[200001,1]
 visited=[-1 for _ in range(200001)]
 visited[n]=0
