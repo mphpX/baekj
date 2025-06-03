@@ -1,0 +1,19 @@
+n=int(input())
+nums=list(map(int,input().split()))
+left=0 
+right=n-1
+mini=2000000001
+l_ans=0 
+r_ans=0
+while(left< right):
+    check=nums[right]+nums[left]
+    abs_check=abs(check)
+    if(abs_check<mini):
+        mini=abs_check
+        l_ans=left
+        r_ans=right
+    if(check>0):
+        right-=1
+    else:
+        left+=1
+print(nums[l_ans],nums[r_ans])
