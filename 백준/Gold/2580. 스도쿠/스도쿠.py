@@ -9,15 +9,19 @@ for i in range(9):
             zero.append((i,j))
 
 def valid_set(x,y):
-    row=set([0,1,2,3,4,5,6,7,8,9])-set(graph[x])
-    cc=set([graph[j][y] for j in range(9)])
-    column=set([0,1,2,3,4,5,6,7,8,9])-cc
-    cs=[]
+    visited=[False for _ in range(10)]
+    for i in graph[x]:
+        visited[i]=True
+    for i in range(9):
+        visited[graph[i][y]]=True
     for i in range(3):
         for j in range(3):
-            cs.append(graph[x//3*3+i][y//3*3+j])
-    square=set([0,1,2,3,4,5,6,7,8,9])-set(cs)
-    return row&column&square
+            visited[graph[x//3*3+i][y//3*3+j]]=True
+    valid=[]
+    for i in range(1,10):
+        if(visited[i]==False):
+            valid.append(i)
+    return valid
 
 def back_track(idx):
     if(idx==len(zero)):
