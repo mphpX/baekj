@@ -10,15 +10,13 @@ def solution(maps):
     visited[0][0]=1
     while(q):
         cur_x,cur_y= q.popleft()
+        if(cur_x== x-1 and cur_y== y-1):
+            return visited[x-1][y-1]
         for i in range(4):
             next_x, next_y = cur_x+ dx[i], cur_y+ dy[i]
             if(0<=next_x<x and 0<= next_y<y):
                 if(maps[next_x][next_y]!=0 and visited[next_x][next_y]==0):
                     visited[next_x][next_y]= visited[cur_x][cur_y]+1
                     q.append((next_x,next_y))
-    ans=visited[x-1][y-1]
-    if ans:
-        return ans
-    else:
-        return -1
+    return -1
         
