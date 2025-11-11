@@ -1,13 +1,13 @@
 def solution(s):
-    answer = ''
+    result = []
     need = 1
     for i in s:
-        if(i==' '):
-            answer+= ' '
+        if i == ' ':
+            result.append(' ')
             need = 1
-        elif(need==1):
-            answer+= i.upper()
+        elif need == 1:
+            result.append(i.upper())
             need = 0
         else:
-            answer+=i.lower()
-    return answer
+            result.append(i.lower())
+    return ''.join(result)
