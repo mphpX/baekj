@@ -40,10 +40,7 @@ T = int(input())
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
-    answer= 0
-    l= list(map(int, input().split()))
-    for i in l:
-        if(i%2==1):
-            answer+=i
+    nums= map(int, input().split())
+    answer= sum(x for x in nums if x%2)
     print('#',test_case, ' ' ,answer, sep='')
     # ///////////////////////////////////////////////////////////////////////////////////
