@@ -1,4 +1,4 @@
-T = int(input())
-nums= list(map(int,input().split()))
-nums.sort()
-print(nums[T//2])
+n= int(input())
+arr = list(map(int,input().split()))
+arr.sort()
+print(arr[n//2])
