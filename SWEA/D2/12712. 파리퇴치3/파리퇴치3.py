@@ -7,7 +7,6 @@ def calculate(m, dx,dy):
             if(0<=cur_i <n and 0<=cur_j<n):
                 fly+=graph[cur_i][cur_j]
     return fly + graph[i][j]
-
 T = int(input())
 for test_case in range(1, T + 1):
     n, m = map(int,input().split())
@@ -20,5 +19,4 @@ for test_case in range(1, T + 1):
             bx=[-1,1,-1,1]
             by=[-1,-1,1,1]
             dead_fly= max(calculate(m, ax, ay), calculate(m, bx, by), dead_fly)
-            
     print('#',test_case,' ',dead_fly, sep='')
