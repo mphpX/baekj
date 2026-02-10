@@ -1,4 +1,4 @@
-import sys
-n=int(input())
-arr=list(map(int,input().split()))
-print("%d %d"%(min(arr),max(arr)))
+N = int(input())
+num =list(map(int, input().split()))
+
+print(f'{min(num)} {max(num)}')
