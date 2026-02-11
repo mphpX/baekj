@@ -1,11 +1,15 @@
-a=int(input())
-b=int(input())
-c=int(input())
-d=[0 for i in range(10)]
-result=a*b*c
-while(result>0):
-    e=result%10
-    result//=10
-    d[e]+=1
+num_list=[]
+for i in range(3):
+    num_list.append(int(input()))
+
+result=1
+for k in num_list:
+    result *= k
+    re_result=str(result)
+
+blank = [0] * 10
 for i in range(10):
-    print(d[i])
+    if str(i) in re_result:
+        blank[i]+=re_result.count(str(i))
+        # blank[i] += 1
+print(*blank, sep='\n')
