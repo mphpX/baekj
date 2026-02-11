@@ -1,10 +1,12 @@
-import sys
-arr=[]
+blank= []
 for i in range(9):
-    x=int(input())
-    arr.append(x)
-m=max(arr)
-for i in range(9):
-    if(arr[i]==m):
-        print("%d\n%d" %(arr[i],i+1))
-        break
+    blank.append(int(input()))
+
+# max_num = max(blank)
+# print(max_num)
+idx=0
+for k in range(len(blank)):
+    if blank[k] >blank[idx]:
+        idx= k
+print(blank[idx])
+print(idx+1)
