@@ -1,9 +1,9 @@
-import sys
-arr=[]
-for i in range(31):
-    arr.append(0)
+
+
+num_list= []
 for i in range(28):
-    x=int(input())
-    arr[x]+=1
-for i in range(1,31):
-    if(arr[i]==0):print(i)
+    num_list.append(int(input()))
+
+for k in range(1,31):
+    if k not in num_list:
+        print(k)
