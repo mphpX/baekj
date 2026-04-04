@@ -1,14 +1,6 @@
 import java.util.*;
 import java.io.*;
 public class Main {
-    static class Balloon {
-        int idx;
-        int move;
-        Balloon(int idx, int move){
-            this.idx = idx;
-            this.move = move;
-        }
-    }
     public static void main(String args[]) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
