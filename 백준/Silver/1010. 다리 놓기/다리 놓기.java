@@ -12,11 +12,15 @@ public class Main {
             long m = Long.parseLong(st.nextToken());
             n= Math.min(n, m-n);
             long ans = 1;
-            for (long i = 1; i <= n; i++) {
-                ans = ans * (m - i + 1) / i;
+            for(long i = 0; i < n; i++){
+                ans*= m-i;
+            }
+            for(long i = 2; i <= n; i++){
+                ans/=i;
             }
             bw.write(ans+ "\n");
         }
         bw.flush();
+        
     }
 }
