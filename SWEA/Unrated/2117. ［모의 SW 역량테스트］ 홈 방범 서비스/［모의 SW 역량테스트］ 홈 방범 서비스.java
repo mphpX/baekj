@@ -6,16 +6,11 @@ public class Solution {
 	static int n;
 	static int calculate(int x, int y, int k) {
 		int house= 0;
-		for(int i = x; i < x+k; i++) {
-			for(int j = y - (k-1) +(i-x); j <= y+(k-1) -(i-x); j++) {
-				if(0 > i || i >= n || 0 > j || j >= n) continue;
-				house+= graph[i][j];
-			}
-		}
-		for(int i = x-k+1; i < x; i++) {
-			for(int j = y +(x-k+1-i); j <= y - (x-k+1-i); j++) {
-				if(0 > i || i >= n || 0 > j || j >= n) continue;
-				house+= graph[i][j];
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < n; j++) {
+				if(Math.abs(x-i) + Math.abs(y-j) < k) {
+					house += graph[i][j];
+				}
 			}
 		}
 		return house;
