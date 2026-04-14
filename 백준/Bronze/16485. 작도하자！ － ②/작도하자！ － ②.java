@@ -7,6 +7,6 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int n = Integer.parseInt(st.nextToken());
 		int m = Integer.parseInt(st.nextToken());
-		System.out.printf("%.6f", (double)n/m);
+		System.out.printf("%.10f", (double)n/m);
     }
 }
