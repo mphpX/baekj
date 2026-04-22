@@ -1,0 +1,16 @@
+/*
+ANIMAL_INS      ANIMAL_ID
+ANIMAL_OUTS     ANIMAL_ID
+
+SELECT ANIMAL_ID, ANIMAL_TYPE, NAME
+Intact : 중성화x
+===================================
+보호소에 들어올 당시에는 중성화되지 않았지만 보호소를 나갈 당시에는 중성화된 동물
+*/
+SELECT A.ANIMAL_ID, A.ANIMAL_TYPE, A.NAME
+  FROM ANIMAL_INS AS A
+  JOIN ANIMAL_OUTS AS B
+    ON A.ANIMAL_ID = B.ANIMAL_ID
+WHERE A.SEX_UPON_INTAKE LIKE 'Intact%' 
+   AND (B.SEX_UPON_OUTCOME LIKE 'Spayed%' or B.SEX_UPON_OUTCOME LIKE 'Neutered%')
+ORDER BY A.ANIMAL_ID
